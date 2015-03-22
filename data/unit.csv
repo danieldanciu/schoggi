@@ -1,0 +1,12 @@
+id,type,unit_id,title,release_date,now_available
+1,U,1,Gruezi,available July 10,True
+2,U,2,Wie geht es Ihnen?,available July 11,True
+3,,U,3,Advanced techniques,available July 12,True
+4,A,Mid,Mid-course assessment,,True
+5,U,4,Find facts faster,available July 17,True
+6,U,5,Checking your facts,available July 18,True
+7,U,6,Putting it all together,available July 19,True
+8,A,ReviewAssessmentExample,Sample peer review assignment,,True
+9,A,Fin,Post-course assessment,,True
+10,O,https://www.youtube.com/watch?v=ZhhiXxiAVtM&feature=player_embedded,Power Searching with Search Experts Video,,True
+11,O,https://www.youtube.com/watch?v=dwlpViuIYgU&feature=player_embedded,Hang Out with Search Experts Video,,True

@@ -1,0 +1,75 @@
+application: schweizerdeutschonline
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: false
+
+env_variables:
+  GCB_PRODUCT_VERSION: '1.7.0'
+  GCB_APPSTATS_ENABLED: true
+  GCB_REGISTERED_MODULES:
+    modules.activity_tag.activity_tag
+    modules.admin.admin
+    modules.announcements.announcements
+    modules.assessment_tags.questions
+    modules.certificate.certificate
+    modules.core_tags.core_tags
+    modules.course_explorer.course_explorer
+    modules.courses.courses
+    modules.data_source_providers.data_source_providers
+    modules.dashboard.dashboard
+    modules.i18n_dashboard.i18n_dashboard
+    modules.invitation.invitation
+    modules.manual_progress.manual_progress
+    modules.mapreduce.mapreduce_module
+    modules.math.math
+    modules.notifications.notifications
+    modules.oeditor.oeditor
+    modules.review.review
+    modules.search.search
+    modules.unsubscribe.unsubscribe
+    modules.upload.upload
+    modules.oauth2.oauth2=disabled
+
+includes:
+- custom.yaml
+
+inbound_services:
+- warmup
+
+builtins:
+- remote_api: on
+- deferred: on
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: pycrypto
+  version: "2.6"
+- name: webapp2
+  version: "2.5.2"
+- name: webob
+  version: "1.2.3"
+
+handlers:
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+  secure: always
+- url: /cron/.*
+  script: main.app
+  login: admin
+  secure: always
+- url: /mapreduce/worker/.*
+  script: main.app
+  login: admin
+  secure: always
+- url: /gae_mini_profiler/static
+  static_dir: gae_mini_profiler/static
+  login: optional
+- url: /gae_mini_profiler/.*
+  script: gae_mini_profiler.main.application
+  login: optional
+- url: /.*
+  script: main.app
+  secure: never
