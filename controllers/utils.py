@@ -219,6 +219,7 @@ def display_unit_title(unit, course_properties=None):
         if unit.type != 'U' or unit.index == 1:
             return unit.title
         # I18N: Message displayed as title for unit within a course.
+        print "Unit title is: " + unit.title
         if unit.title != '':
             return gettext.gettext('Unit %s - %s' % (unit.index - 1, unit.title))
         else:
