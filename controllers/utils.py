@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from symbol import parameters
+import logging
 
 """Handlers that are not directly related to course content."""
 
@@ -213,13 +214,13 @@ def display_unit_title(unit, course_properties=None):
     """Prepare an internationalized display for the unit title."""
     if not course_properties:
         course_properties = _get_course_properties()
+    logging.info(u"Unit title is: " + unit.title)
     if course_properties['course'].get('display_unit_title_without_index'):
         return unit.title
     else:
         if unit.type != 'U' or unit.index == 1:
             return unit.title
         # I18N: Message displayed as title for unit within a course.
-        print "Unit title is: " + unit.title
         if unit.title != '':
             return gettext.gettext('Unit %s - %s' % (unit.index - 1, unit.title))
         else:

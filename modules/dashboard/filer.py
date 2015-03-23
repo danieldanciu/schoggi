@@ -56,7 +56,7 @@ DISPLAYABLE_ASSET_BASES = frozenset([
     'assets/img',
 ])
 
-MAX_ASSET_UPLOAD_SIZE_K = 500
+MAX_ASSET_UPLOAD_SIZE_K = 5000
 
 
 def allowed_asset_upload_bases():

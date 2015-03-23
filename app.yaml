@@ -70,6 +70,8 @@ handlers:
 - url: /gae_mini_profiler/.*
   script: gae_mini_profiler.main.application
   login: optional
+- url: /audio
+  static_dir: audio
 - url: /.*
   script: main.app
   secure: never

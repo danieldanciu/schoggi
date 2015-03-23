@@ -2906,8 +2906,8 @@ class Course(object):
             return []
 
         # THIS IS TRAGICALLY INEFFICIENT, MAY CAUSE dashboard to render in 30 secs
-        # return common.tags.get_components_from_html(lesson.objectives)
-        return []
+        return common.tags.get_components_from_html(lesson.objectives)
+        # return []
 
     def get_content_as_dict_safe(self, unit, errors, kind='assessment'):
         """Validate the assessment or review script and return as a dict."""
