@@ -1,0 +1,282 @@
+
+<script src="assets/lib/lesson.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/lesson.css">
+
+<script>
+var wordList=["an", "angehalten", "anhalten", "auf", "Ausfahrt", "Ausfahrten", "Autobahnen", "besprechen", "Besprechung", "Besprechungen", "besprochen", "Busse", "Bussen", "einfach", "Einfahrt", "Einfahrten", "fahren", "gefahren", "geradeaus", "Geschwindigkeit", "gesucht", "ich suche", "Kreuzung", "Kreuzungen", "kurz", "Lindenplatz", "Minuten", "muss", "müssen", "nach kurzer Zeit", "Parkplätze", "Plätze", "Polizist", "Polizisten", "Seite", "Seiten", "sich verfahren", "Städte", "Strasse", "Strassen", "suchen", "tanken", "Tankstelle", "Tankstellen", "von", "wie", "Wohnung", "Wohnungen", "Wülflingen", "Zeit"]
+</script>
+<p>Lesen Sie die folgenden W√∂rter auf Schweizerdeutsch, indem Sie die Umformungsregeln anwenden.
+<br>Wenn Sie das Schweizerdeutsche Wort h√∂ren wollen, klicken Sie darauf.</p>
+<p class="wrap" id="play_all" onclick="playAudioAll(this, wordList)">
+  Play All
+  <button class="gcb-button-speaker">
+  <img src="assets/img/speaker_icon16.png" style="vertical-align:middle">
+  </button>
+</p>
+
+
+<audio id="chd-wort" src=""></audio><div style="border:solid windowtext 1.0pt; padding:1.0pt 4.0pt 1.0pt 4.0pt" class="yui-wk-div"><table style="width:100%;border:0"><tbody>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="an" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="angehalten" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span>g<span style='background:orange'>e</span>halte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="anhalten" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span>halte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="auf" onclick="playAudio(this)"><span style="background:orange">au</span><span>f</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Ausfahrt" onclick="playAudio(this)"><span style="background:orange">Au</span><span>sfahrt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Ausfahrten" onclick="playAudio(this)"><span style="background:orange">Au</span><span>sfahrte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Autobahnen" onclick="playAudio(this)"><span>Autobahne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="besprechen" onclick="playAudio(this)"><span>bespreche<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Besprechung" onclick="playAudio(this)"><span>Besprech<span style='background:orange'>ung</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Besprechungen" onclick="playAudio(this)"><span>Besprech<span style='background:orange'>ung</span>e<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="besprochen" onclick="playAudio(this)"><span>besproche<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Busse" onclick="playAudio(this)"><span>B<span style='background:orange'>u</span>ss<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Bussen" onclick="playAudio(this)"><span>B<span style='background:orange'>u</span>sse<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="einfach" onclick="playAudio(this)"><span>ei<span style='background:orange'>n</span>fach</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Einfahrt" onclick="playAudio(this)"><span style="background:orange">Ein</span><span>fahrt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Einfahrten" onclick="playAudio(this)"><span style="background:orange">Ein</span><span>fahrte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="fahren" onclick="playAudio(this)"><span>fahre<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="gefahren" onclick="playAudio(this)"><span>g<span style='background:orange'>e</span>fahre<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="geradeaus" onclick="playAudio(this)"><span>g<span style='background:orange'>e</span>rad<span style='background:orange'>eau</span>s</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Geschwindigkeit" onclick="playAudio(this)"><span>G<span style='background:orange'>e</span>schwindigkeit</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="gesucht" onclick="playAudio(this)"><span>g<span style='background:orange'>e</span>s<span style='background:orange'>u</span>cht</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="ich suche" onclick="playAudio(this)"><span>ich</td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kreuzung" onclick="playAudio(this)"><span style="background:orange">K</span><span>r<span style='background:orange'>eu</span>z<span style='background:orange'>ung</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kreuzungen" onclick="playAudio(this)"><span style="background:orange">K</span><span>r<span style='background:orange'>eu</span>z<span style='background:orange'>ung</span>e<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="kurz" onclick="playAudio(this)"><span style="background:orange">k</span><span>urz</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Lindenplatz" onclick="playAudio(this)"><span>Linde<span style='background:orange'>n</span>platz</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Minuten" onclick="playAudio(this)"><span>Minute<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="muss" onclick="playAudio(this)"><span>m<span style='background:orange'>u</span>ss</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="müssen" onclick="playAudio(this)"><span>m<span style='background:orange'>ü</span>sse<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="nach kurzer Zeit" onclick="playAudio(this)"><span>nach</td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Parkplätze" onclick="playAudio(this)"><span>Parkplätz<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Plätze" onclick="playAudio(this)"><span>Plätz<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Polizist" onclick="playAudio(this)"><span>Polizi<span style='background:orange'>s</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Polizisten" onclick="playAudio(this)"><span>Polizi<span style='background:orange'>s</span>te<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Seite" onclick="playAudio(this)"><span>S<span style='background:orange'>ei</span>te</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Seiten" onclick="playAudio(this)"><span>S<span style='background:orange'>ei</span>te<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="sich verfahren" onclick="playAudio(this)"><span>sich</td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Städte" onclick="playAudio(this)"><span>Städt<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Strasse" onclick="playAudio(this)"><span>Strass<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Strassen" onclick="playAudio(this)"><span>Strasse<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="suchen" onclick="playAudio(this)"><span>s<span style='background:orange'>u</span>che<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="tanken" onclick="playAudio(this)"><span>tanke<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Tankstelle" onclick="playAudio(this)"><span>Tankstell<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Tankstellen" onclick="playAudio(this)"><span>Tankstelle<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="von" onclick="playAudio(this)"><span>vo<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="wie" onclick="playAudio(this)"><span>w<span style='background:orange'>ie</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Wohnung" onclick="playAudio(this)"><span>Wohn<span style='background:orange'>ung</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Wohnungen" onclick="playAudio(this)"><span>Wohn<span style='background:orange'>ung</span>e<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Wülflingen" onclick="playAudio(this)"><span>Wülflinge<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Zeit" onclick="playAudio(this)"><span>Z<span style='background:orange'>ei</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr></tbody></table></div>

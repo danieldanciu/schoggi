@@ -25,6 +25,7 @@ import webapp2
 import appengine_config  # pylint: disable-msg=unused-import
 
 from controllers import sites
+from controllers import utils
 from models import analytics
 from models import custom_modules
 from models import data_sources
@@ -45,6 +46,9 @@ custom_modules.Module(
     student_labels.get_namespaced_handlers()
     ).enable()
 
+# Routes used by App Engine internals.
+lifecycle_routes = [('/_ah/start', utils.NoopInstanceLifecycleRequestHandler)]
+    
 # Collect routes (URL-matching regexes -> handler classes) for modules.
 global_routes, namespaced_routes = custom_modules.Registry.get_all_routes()
 
@@ -72,7 +76,7 @@ webapp2_i18n_config = {'translations_path': os.path.join(
     appengine_config.BUNDLE_ROOT, 'modules/i18n/resources/locale')}
 
 app = webapp2.WSGIApplication(
-    payment_routes + global_routes + appstats_routes + app_routes,
+    lifecycle_routes + payment_routes + global_routes + appstats_routes + app_routes,
     config={'webapp2_extras.i18n': webapp2_i18n_config
     },
     debug=not appengine_config.PRODUCTION_MODE)

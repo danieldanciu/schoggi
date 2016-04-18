@@ -3,7 +3,7 @@
       href="dashboard?action=edit_lesson&key={{ lesson.lesson_id }}"
       class="gcb-button gcb-button-action gcb-button-author">Edit  Lesson</a>
 {% endif %}
-<p>User email: {{user and user.user_id()}}. User id: {{user and user.email()}}. Is paid is: {{ unit.is_paid }}. Paid student is: {{ student and student.has_paid }}. Can see drafts: {{ can_see_drafts }}. Lesson available: {{ lesson.now_available }}. </p>
+<p>User email: {{user and user.user_id()}}. User id: {{user and user.email()}}. Unit paid is: {{ unit.is_paid }}. Paid student is: {{ student and student.has_paid }}. Can see drafts: {{ can_see_drafts }}. Lesson available: {{ lesson.now_available }}. </p>
 {% if (lesson.now_available or can_see_drafts) and (not unit.is_paid or unit.is_paid and paid_student) %}
   <div {% if lesson.notes %}class="gcb-cols"{% endif %}>
     <div id="lesson-title" {% if lesson.notes %}class="gcb-col-7"{% endif %}>
@@ -51,6 +51,13 @@
       <input type="hidden" name="amount" value="49">
       <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Jetz bezahlen">
     </form-->
+    <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="G7FZVYJMEAT38">
+<input type="image" src="https://www.paypalobjects.com/en_US/CH/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+     -->
     <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
       <input type="hidden" name="cmd" value="_s-xclick">
       <input type="hidden" name="hosted_button_id" value="594CBZZHGLXUS">

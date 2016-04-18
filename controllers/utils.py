@@ -214,7 +214,7 @@ def display_unit_title(unit, course_properties=None):
     """Prepare an internationalized display for the unit title."""
     if not course_properties:
         course_properties = _get_course_properties()
-    logging.info(u"Unit title is: " + unit.title)
+    unit.title = unicode(unit.title)
     if course_properties['course'].get('display_unit_title_without_index'):
         return unit.title
     else:
@@ -952,6 +952,14 @@ class PaymentHandler(webapp2.RequestHandler):
         Your ch-de.ch overwhelmed robot.""",
         'We couldn\'t enable access to ch-de.ch'
     )
+class NoopInstanceLifecycleRequestHandler(webapp2.RequestHandler):
+    """Noop Handler for internal App Engine instance lifecycle requests.
+
+    See https://cloud.google.com/appengine/docs/python/modules/.
+    """
+
+    def get(self):
+        self.response.status_code = 200
 
 class ForumHandler(BaseHandler):
     """Handler for forum page."""

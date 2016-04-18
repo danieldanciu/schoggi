@@ -1,0 +1,294 @@
+
+<script src="assets/lib/lesson.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/lesson.css">
+
+<script>
+var wordList=["an", "anprobieren", "anprobiert", "Anzug", "Anzüge", "ausgeschnitten", "Ausschnitt", "bei", "bringen", "einfarbig", "Faden", "Farbe", "Farben", "finden", "Freundin", "gefallen", "Geschäft", "Geschäfte", "gestern", "gut", "heute", "Hut", "Ihnen", "in", "Kabinen", "Kappe", "Kleid", "Kleider", "Knopf", "Knöpfe", "Kolleginnen", "Kostüm", "Kostüme", "Kragen", "kurz", "kürzer", "Laden", "Läden", "Leinen", "meinen", "Minuten", "passen", "Reissverschluss", "Reissverschlüsse", "Schuh", "Seide", "teuer", "Verkäuferin", "Verkäuferinnen", "zeigen"]
+</script>
+<p>Lesen Sie die folgenden W√∂rter auf Schweizerdeutsch, indem Sie die Umformungsregeln anwenden.
+<br>Wenn Sie das Schweizerdeutsche Wort h√∂ren wollen, klicken Sie darauf.</p>
+<p class="wrap" id="play_all" onclick="playAudioAll(this, wordList)">
+  Play All
+  <button class="gcb-button-speaker">
+  <img src="assets/img/speaker_icon16.png" style="vertical-align:middle">
+  </button>
+</p>
+
+
+<audio id="chd-wort" src=""></audio><div style="border:solid windowtext 1.0pt; padding:1.0pt 4.0pt 1.0pt 4.0pt" class="yui-wk-div"><table style="width:100%;border:0"><tbody>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="an" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="anprobieren" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span>prob<span style='background:orange'>ie</span>re<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="anprobiert" onclick="playAudio(this)"><span>a<span style='background:orange'>n</span>prob<span style='background:orange'>ie</span>rt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Anzug" onclick="playAudio(this)"><span>A<span style='background:orange'>n</span>zug</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Anzüge" onclick="playAudio(this)"><span>A<span style='background:orange'>n</span>züg<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="ausgeschnitten" onclick="playAudio(this)"><span style="background:orange">au</span><span>sg<span style='background:orange'>e</span>schnitte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Ausschnitt" onclick="playAudio(this)"><span style="background:orange">Au</span><span>sschnitt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="bei" onclick="playAudio(this)"><span>b<span style='background:orange'>ei</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="bringen" onclick="playAudio(this)"><span>bringe<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="einfarbig" onclick="playAudio(this)"><span>ei<span style='background:orange'>n</span>farbig</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Faden" onclick="playAudio(this)"><span>Fade<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Farbe" onclick="playAudio(this)"><span>Farb<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Farben" onclick="playAudio(this)"><span>Farbe<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="finden" onclick="playAudio(this)"><span>finde<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Freundin" onclick="playAudio(this)"><span>Fr<span style='background:orange'>eu</span>ndin</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="gefallen" onclick="playAudio(this)"><span>g<span style='background:orange'>e</span>falle<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Geschäft" onclick="playAudio(this)"><span>G<span style='background:orange'>e</span>schäft</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Geschäfte" onclick="playAudio(this)"><span>G<span style='background:orange'>e</span>schäft<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="gestern" onclick="playAudio(this)"><span>ge<span style='background:orange'>s</span>ter<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="gut" onclick="playAudio(this)"><span>g<span style='background:orange'>u</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="heute" onclick="playAudio(this)"><span>h<span style='background:orange'>eu</span>t<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Hut" onclick="playAudio(this)"><span>H<span style='background:orange'>u</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Ihnen" onclick="playAudio(this)"><span>Ihne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="in" onclick="playAudio(this)"><span>i<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kabinen" onclick="playAudio(this)"><span>Kabine<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kappe" onclick="playAudio(this)"><span style="background:orange">K</span><span style='background:orange'>appe</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kleid" onclick="playAudio(this)"><span style="background:orange">K</span><span>leid</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kleider" onclick="playAudio(this)"><span style="background:orange">K</span><span>leider</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Knopf" onclick="playAudio(this)"><span style="background:orange">K</span><span>nopf</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Knöpfe" onclick="playAudio(this)"><span style="background:orange">K</span><span>nöpf<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kolleginnen" onclick="playAudio(this)"><span>Kolleginne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kostüm" onclick="playAudio(this)"><span>Ko<span style='background:orange'>s</span>tüm</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kostüme" onclick="playAudio(this)"><span style="background:orange">K</span><span>o<span style='background:orange'>s</span>tüm<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kragen" onclick="playAudio(this)"><span style="background:orange">K</span><span>rage<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="kurz" onclick="playAudio(this)"><span style="background:orange">k</span><span>urz</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="kürzer" onclick="playAudio(this)"><span style="background:orange">k</span><span>ürzer</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Laden" onclick="playAudio(this)"><span>Lade<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Läden" onclick="playAudio(this)"><span>Läde<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Leinen" onclick="playAudio(this)"><span>L<span style='background:orange'>ei</span>ne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="meinen" onclick="playAudio(this)"><span>meine<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Minuten" onclick="playAudio(this)"><span>Minute<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="passen" onclick="playAudio(this)"><span>passe<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Reissverschluss" onclick="playAudio(this)"><span>R<span style='background:orange'>ei</span>ssverschluss</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Reissverschlüsse" onclick="playAudio(this)"><span>R<span style='background:orange'>ei</span>ssverschlüss<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Schuh" onclick="playAudio(this)"><span>Sch<span style='background:orange'>u</span>h</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Seide" onclick="playAudio(this)"><span>S<span style='background:orange'>ei</span>de</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="teuer" onclick="playAudio(this)"><span>t<span style='background:orange'>eue</span>r</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Verkäuferin" onclick="playAudio(this)"><span>Ver<span style='background:orange'>k</span>äuferin</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Verkäuferinnen" onclick="playAudio(this)"><span>Ver<span style='background:orange'>k</span>äuferinne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="zeigen" onclick="playAudio(this)"><span>zeige<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr></tbody></table></div>

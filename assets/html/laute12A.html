@@ -1,0 +1,294 @@
+
+<script src="assets/lib/lesson.js"></script>
+
+<link rel="stylesheet" type="text/css" href="assets/css/lesson.css">
+
+<script>
+var wordList=["bestellen", "bestellt", "Bier", "Bohnen", "Bratwurst", "bringen", "Eis", "Eistee", "Eiswürfel", "gefunden", "gekocht", "Gemüse", "Getränke", "Gewürz", "gleich", "gut", "hausgemacht", "kalt", "Kellner", "Koch", "kochen", "Kräuter", "Kreditkarte", "Kugel", "Pilze", "Rechnung", "Rechnungen", "Reis", "reservieren", "Rösti", "Rotwein", "sauer", "schon", "sitzen", "Speisekarte", "Spezialitäten", "Spiess", "Sternen", "süss", "süss-sauer", "Tomaten", "Traubensaft", "trinken", "Wein", "Weissbier", "Weisswein", "Wurst", "würzen", "zahlen", "Zungenwurst"]
+</script>
+<p>Lesen Sie die folgenden W√∂rter auf Schweizerdeutsch, indem Sie die Umformungsregeln anwenden.
+<br>Wenn Sie das Schweizerdeutsche Wort h√∂ren wollen, klicken Sie darauf.</p>
+<p class="wrap" id="play_all" onclick="playAudioAll(this, wordList)">
+  Play All
+  <button class="gcb-button-speaker">
+  <img src="assets/img/speaker_icon16.png" style="vertical-align:middle">
+  </button>
+</p>
+
+
+<audio id="chd-wort" src=""></audio><div style="border:solid windowtext 1.0pt; padding:1.0pt 4.0pt 1.0pt 4.0pt" class="yui-wk-div"><table style="width:100%;border:0"><tbody>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="bestellen" onclick="playAudio(this)"><span>b<span style='background:orange'>e</span>stelle<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="bestellt" onclick="playAudio(this)"><span>b<span style='background:orange'>e</span>stellt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Bier" onclick="playAudio(this)"><span>B<span style='background:orange'>ie</span>r</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Bohnen" onclick="playAudio(this)"><span>Bohne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Bratwurst" onclick="playAudio(this)"><span>Bratwur<span style='background:orange'>s</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="bringen" onclick="playAudio(this)"><span>bringe<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Eis" onclick="playAudio(this)"><span style="background:orange">Ei</span><span>s</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Eistee" onclick="playAudio(this)"><span style="background:orange">Ei</span><span>stee</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Eiswürfel" onclick="playAudio(this)"><span style="background:orange">Ei</span><span>swürfel</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="gefunden" onclick="playAudio(this)"><span>g<span style='background:orange'>e</span>funde<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="gekocht" onclick="playAudio(this)"><span>g<span style='background:orange'>ek</span>ocht</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Gemüse" onclick="playAudio(this)"><span>G<span style='background:orange'>e</span>m<span style='background:orange'>ü</span>s<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Getränke" onclick="playAudio(this)"><span>Getränk<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Gewürz" onclick="playAudio(this)"><span>G<span style='background:orange'>e</span>würz</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="gleich" onclick="playAudio(this)"><span>gl<span style='background:orange'>ei</span>ch</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="gut" onclick="playAudio(this)"><span>g<span style='background:orange'>u</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="hausgemacht" onclick="playAudio(this)"><span>h<span style='background:orange'>au</span>sg<span style='background:orange'>e</span>macht</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="kalt" onclick="playAudio(this)"><span style="background:orange">k</span><span>alt</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kellner" onclick="playAudio(this)"><span style="background:orange">K</span><span>ellner</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Koch" onclick="playAudio(this)"><span style="background:orange">K</span><span>och</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="kochen" onclick="playAudio(this)"><span style="background:orange">k</span><span>oche<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kräuter" onclick="playAudio(this)"><span style="background:orange">K</span><span>r<span style='background:orange'>äu</span>ter</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kreditkarte" onclick="playAudio(this)"><span>Kredit<span style='background:orange'>k</span>arte</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Kugel" onclick="playAudio(this)"><span style="background:orange">K</span><span>ug<span style='background:orange'>el</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Pilze" onclick="playAudio(this)"><span>Pilz<span style='background:orange'>e</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Rechnung" onclick="playAudio(this)"><span>Rechn<span style='background:orange'>ung</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Rechnungen" onclick="playAudio(this)"><span>Rechn<span style='background:orange'>ung</span>e<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Reis" onclick="playAudio(this)"><span>R<span style='background:orange'>ei</span>s</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="reservieren" onclick="playAudio(this)"><span>reserv<span style='background:orange'>ie</span>re<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Rösti" onclick="playAudio(this)"><span>Rö<span style='background:orange'>s</span>ti</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Rotwein" onclick="playAudio(this)"><span>Rotw<span style='background:orange'>ein</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="sauer" onclick="playAudio(this)"><span>s<span style='background:orange'>aue</span>r</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="schon" onclick="playAudio(this)"><span>scho<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="sitzen" onclick="playAudio(this)"><span>sitze<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Speisekarte" onclick="playAudio(this)"><span>Sp<span style='background:orange'>ei</span>s<span style='background:orange'>ek</span>arte</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Spezialitäten" onclick="playAudio(this)"><span>Spezialitäte<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Spiess" onclick="playAudio(this)"><span>Sp<span style='background:orange'>ie</span>ss</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Sternen" onclick="playAudio(this)"><span>Sterne<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="süss" onclick="playAudio(this)"><span>s<span style='background:orange'>ü</span>ss</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="süss-sauer" onclick="playAudio(this)"><span>s<span style='background:orange'>ü</span>ss-s<span style='background:orange'>aue</span>r</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Tomaten" onclick="playAudio(this)"><span>Tomate<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Traubensaft" onclick="playAudio(this)"><span>Tr<span style='background:orange'>au</span>be<span style='background:orange'>n</span>saft</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="trinken" onclick="playAudio(this)"><span>trinke<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Wein" onclick="playAudio(this)"><span>W<span style='background:orange'>ein</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Weissbier" onclick="playAudio(this)"><span>W<span style='background:orange'>ei</span>ssb<span style='background:orange'>ie</span>r</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Weisswein" onclick="playAudio(this)"><span>W<span style='background:orange'>ei</span>ssw<span style='background:orange'>ein</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="Wurst" onclick="playAudio(this)"><span>Wur<span style='background:orange'>s</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="würzen" onclick="playAudio(this)"><span>würze<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr>
+<tr id = "de">
+	<td style="width:50%;border:0"><p><span class="wrap" id="zahlen" onclick="playAudio(this)"><span>zahle<span style='background:orange'>n</span></span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td>
+	<td style="width:50%;border:0"><p><span class="wrap" id="Zungenwurst" onclick="playAudio(this)"><span>Zunge<span style='background:orange'>n</span>wur<span style='background:orange'>s</span>t</span>
+  <button style="float:right" class="gcb-button-speaker noshow">
+  <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
+  </button>
+</p></td></tr></tbody></table></div>

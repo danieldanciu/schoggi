@@ -938,28 +938,33 @@ class PersistentCourse13(object):
         binary_data = persistent.serialize()
         binary_data_size = len(binary_data)
         chunk_size = cls.CHUNK_SIZE
+        chunk_count = 0
         for pos in range(0, binary_data_size, chunk_size):
             # TODO: use memcache.set_multi() for speedup, but don't forget
             # about batch operation size limit (32Mb currently).
             chunk = binary_data[pos:pos + chunk_size]
             filename = fs.physical_to_logical("%s%d" % (cls.COURSES_FILENAME, pos))
-            print "to: " + filename
             app_context.fs.put(filename, vfs.FileStreamWrapped(None, chunk))
+            chunk_count = chunk_count + 1
+        print "Course will be saved in %s chunks." % chunk_count 
+        filename = fs.physical_to_logical("chunk_count")
+        app_context.fs.put(filename, vfs.string_to_stream(unicode(str(chunk_count), 'ascii')))
         return None
         
 
     @classmethod
     def load(cls, app_context):
         """Loads course from datastore."""
-        import traceback
-        for line in traceback.format_stack():
-          print line.strip()
         print('========================================== Loading entire course')
         fs = app_context.fs.impl
-        
+        filename = fs.physical_to_logical("chunk_count")
+        stream = app_context.fs.open(filename)
+        chunk_count = int(stream.read())
+        print "Reading data from %s chunks." % chunk_count
         pos = 0
         chunks = []
-        while True:
+        i=0
+        while i< chunk_count:
             #filename = fs.physical_to_logical(cls.COURSES_FILENAME)
             filename = fs.physical_to_logical("%s%d" % (cls.COURSES_FILENAME, pos))
             stream = app_context.fs.open(filename)
@@ -967,6 +972,7 @@ class PersistentCourse13(object):
                 chunks.append(stream.read())
             else:
                 break
+            i = i + 1
             pos = pos + cls.CHUNK_SIZE
         binary_data = ''.join(chunks)
 
@@ -978,7 +984,6 @@ class PersistentCourse13(object):
                 units=persistent.units, lessons=persistent.lessons)
         else:
             return None
-
     
     def serialize(self):
         """Saves instance to a JSON representation."""
@@ -989,6 +994,7 @@ class PersistentCourse13(object):
     def deserialize(self, binary_data):
         """Loads instance from a JSON representation."""
         json_text = binary_data.decode('utf-8')
+        print "Loading text: " + json_text
         adict = transforms.loads(json_text)
         if self.version != adict.get('version'):
             raise Exception('Expected version %s, found %s.' % (
@@ -2906,8 +2912,8 @@ class Course(object):
             return []
 
         # THIS IS TRAGICALLY INEFFICIENT, MAY CAUSE dashboard to render in 30 secs
-        return common.tags.get_components_from_html(lesson.objectives)
-        # return []
+        #return common.tags.get_components_from_html(lesson.objectives)
+        return []
 
     def get_content_as_dict_safe(self, unit, errors, kind='assessment'):
         """Validate the assessment or review script and return as a dict."""

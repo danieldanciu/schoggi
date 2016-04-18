@@ -382,6 +382,15 @@ a.gcb-button-action, button.gcb-button-action {
   border: 1px solid #40DA9D;
 }
 
+.gcb-button-speaker {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
 .gcb-button-author:hover {
   background-color: #009A5D;
   background-image: -moz-linear-gradient(top,#009A5D,#009A5D);
