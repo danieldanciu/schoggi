@@ -955,12 +955,10 @@ class PersistentCourse13(object):
     @classmethod
     def load(cls, app_context):
         """Loads course from datastore."""
-        print('========================================== Loading entire course')
         fs = app_context.fs.impl
         filename = fs.physical_to_logical("chunk_count")
         stream = app_context.fs.open(filename)
         chunk_count = int(stream.read())
-        print "Reading data from %s chunks." % chunk_count
         pos = 0
         chunks = []
         i=0
@@ -994,7 +992,6 @@ class PersistentCourse13(object):
     def deserialize(self, binary_data):
         """Loads instance from a JSON representation."""
         json_text = binary_data.decode('utf-8')
-        print "Loading text: " + json_text
         adict = transforms.loads(json_text)
         if self.version != adict.get('version'):
             raise Exception('Expected version %s, found %s.' % (
@@ -1072,12 +1069,12 @@ class CourseModel13(object):
         """Loads course from memcache or persistence."""
         course = CachedCourse13.load(app_context)
         if not course:
-            print "========================loading course from disk"
+            logging.debug("Loading course from disk")
             course = PersistentCourse13.load(app_context)
             if course:
                 CachedCourse13.save(app_context, course)
-        else: 
-          print "========================= loaded course from MEMCACHE"
+        else:
+            logging.debug("Loaded course from memcache! :)") 
         return course
 
     @classmethod

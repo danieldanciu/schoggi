@@ -658,6 +658,12 @@ class StudentProfileDAO(object):
             return profile
         finally:
             namespace_manager.set_namespace(old_namespace)
+            
+    def __str__(self):
+        if self.profile:
+            return 'Email: ' + self.profile.email  + 'Legal name: ' + self.profile.legal_name + "Nickname: " + self.profile.nick_name
+        else:
+            return ""
 
     @classmethod
     def _update_global_profile_attributes(
@@ -771,8 +777,11 @@ class StudentProfileDAO(object):
     def add_new_student_for_current_user(
         cls, nick_name, additional_fields, handler, labels=None, has_paid=None):
         user = users.get_current_user()
+        logging.debug("User is " + str(user))
 
         student_by_uid = Student.get_student_by_user_id(user.user_id())
+        logging.debug("Student is " + str(student_by_uid))
+        
         is_valid_student = (student_by_uid is None or
                             student_by_uid.user_id == user.user_id())
         assert is_valid_student, (
@@ -875,6 +884,7 @@ class StudentProfileDAO(object):
         """Returns student for a specific course."""
         old_namespace = namespace_manager.get_namespace()
         try:
+            logging.debug("App context namespace is %s" % app_context.get_namespace_name())
             namespace_manager.set_namespace(app_context.get_namespace_name())
             return Student.get_enrolled_student_by_email(email)
         finally:
@@ -950,7 +960,9 @@ class Student(BaseEntity):
 
     @property
     def profile(self):
-        return StudentProfileDAO.get_profile_by_user_id(self.user_id)
+        profile = StudentProfileDAO.get_profile_by_user_id(self.user_id)
+        # logging.debug("Student profile is: " + ('None' if profile == None else profile))
+        return profile
 
     @classmethod
     def _memcache_key(cls, key):
@@ -971,6 +983,7 @@ class Student(BaseEntity):
     @classmethod
     def add_new_student_for_current_user(
         cls, nick_name, additional_fields, handler, labels=None, has_paid=None):
+        logging.debug("Adding new student " + nick_name)
         StudentProfileDAO.add_new_student_for_current_user(
             nick_name, additional_fields, handler, labels, has_paid)
 
@@ -981,19 +994,30 @@ class Student(BaseEntity):
     @classmethod
     def get_enrolled_student_by_email(cls, email):
         """Returns enrolled student or None."""
-        student = MemcacheManager.get(cls._memcache_key(email))
-        if NO_OBJECT == student:
-            return None
-        if not student:
-            student = Student.get_by_email(email)
-            if student:
-                MemcacheManager.set(cls._memcache_key(email), student)
+        old_namespace = namespace_manager.get_namespace()
+        logging.debug("Saving old namespace %s" % old_namespace)
+        try:
+            #TODO: this is a hack that limits this method to work only witht he ns_sample namespace
+            #namespace_manager.set_namespace('ns_sample')
+            students = cls.all().fetch(limit=10)
+            logging.debug("All students are: ")
+            for student in students:
+                logging.debug(student)
+            student = MemcacheManager.get(cls._memcache_key(email))
+            if NO_OBJECT == student:
+                return None
+            if not student:
+                student = Student.get_by_email(email)
+                if student:
+                    MemcacheManager.set(cls._memcache_key(email), student)
+                else:
+                    MemcacheManager.set(cls._memcache_key(email), NO_OBJECT)
+            if student and student.is_enrolled:
+                return student
             else:
-                MemcacheManager.set(cls._memcache_key(email), NO_OBJECT)
-        if student and student.is_enrolled:
-            return student
-        else:
-            return None
+                return None
+        finally:
+            namespace_manager.set_namespace(old_namespace)
 
     @classmethod
     def _get_user_and_student(cls):
@@ -1062,7 +1086,8 @@ class Student(BaseEntity):
         return set([int(label) for label in
                     common_utils.text_to_list(self.labels)
                     if int(label) in label_ids])
-
+    def __str__(self):
+        return 'Id: ' + str(self.user_id) + "Name: " + self.name + " Email: " + self.key().name() + (self.profile() if self.profile != None else "")
 
 class TransientStudent(object):
     """A transient student (i.e. a user who hasn't logged in or registered)."""
@@ -1077,7 +1102,7 @@ class TransientStudent(object):
 
     @property
     def has_paid(self):
-      return False
+        return False
 
 class EventEntity(BaseEntity):
     """Generic events.

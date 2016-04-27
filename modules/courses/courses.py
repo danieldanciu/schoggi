@@ -74,6 +74,7 @@ def register_module():
         ('/forum', utils.ForumHandler),
         ('/preview', utils.PreviewHandler),
         ('/register', utils.RegisterHandler),
+        ('/ipn', utils.PaymentHandler),
         ('/rest/locale', utils.StudentLocaleRESTHandler),
         ('/review', lessons.ReviewHandler),
         ('/reviewdashboard', lessons.ReviewDashboardHandler),

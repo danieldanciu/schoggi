@@ -881,77 +881,104 @@ class RegisterHandler(BaseHandler):
         # Render registration confirmation page
         self.redirect('/course#registration_confirmation')
 
-class PaymentHandler(webapp2.RequestHandler):
-  """ Handles payment-related requests from PayPal """
-  def post(self):
-    """ Handles a PayPal IPN post: https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNIntro/ """
-    import logging, urllib
-    from google.appengine.api import urlfetch
-    parameters = None
+class PaymentSuccessHandler(BaseHandler):
+    """ Display a message to the user that payment was successful """
+    def post(self):
+        self.get()
+    
+    def get(self):
+        self.render("paid.html")
+        
+class PaymentCancelHandler(BaseHandler):
+    """ Display a message to the user that payment was successful """
+    def post(self):
+        self.get()
+    
+    def get(self):
+        student = self.personalize_page_and_get_enrolled()
+        if not student:
+            return
+        self.render("not_paid.html")
 
-    if self.request.POST:
-        parameters = self.request.POST.copy()
-    if self.request.GET:
-        parameters = self.request.GET.copy()
-    logging.debug('Received IPN message: ' + str(parameters))
-      
-    # Check the IPN POST request came from real PayPal, 
-    # not from a fraudster.
-    if not parameters:
-      return
-    parameters['cmd']='_notify-validate'
-    params = urllib.urlencode(parameters)
-    status = urlfetch.fetch(
-                 url = 'https://www.sandbox.paypal.com/cgi-bin/webscr',
-                 method = urlfetch.POST,  
-                 payload = params,
-                ).content
-    if not status == "VERIFIED":
-      logging.warning("Could not verify request: " + str(parameters) + ". Fraud?")
-    # Check funds go into the correct account
-    if not parameters['receiver_email'] == 'niklausumiker@gmail.com':
-      logging.warning("Incorrect receiver email: " + parameters['receiver_email'])
-      return  
-    if not parameters['mc_currency'] == 'USD':
-      logging.warning("Incorrect currency: " + parameters['mc_currency'])
-      return
-
-    student_email = parameters['custom']
-
-    # Check payment is completed, not Pending or Failed.      
-    if parameters['payment_status'] == 'Completed':
-      student = Student.get_by_email(student_email)
-      if not student:
-        logging.warning('Could not process payment for student: ' + student_email) 
-        self.send_error_email(student_email)
-        return
-      logging.info('Student %s is now a full access student. Payment confirmed.')
-      student.has_paid = True
+class PaymentHandler(BaseHandler):
+    """ Handles payment-related requests from PayPal """
+    def post(self):
+        """ Handles a PayPal IPN post: https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNIntro/ """
+        import urllib
+        from google.appengine.api import urlfetch
+        parameters = None
+    
+        if self.request.POST:
+            parameters = self.request.POST.copy()
+        if self.request.GET:
+            parameters = self.request.GET.copy()
+        logging.debug('Received IPN message: ' + str(parameters))
+          
+        # Check the IPN POST request came from real PayPal, not from a fraudster.
+        if not parameters:
+            return
+        parameters['cmd']='_notify-validate'
+        params = urllib.urlencode(parameters)
+        status = urlfetch.fetch(
+                     url = 'https://www.sandbox.paypal.com/cgi-bin/webscr',
+                     method = urlfetch.POST,  
+                     payload = params,
+                    ).content
+        logging.debug('Verification status is: ' + status)
+        if not status == "VERIFIED":
+            logging.warning("Could not verify request: " + str(parameters) + ". Fraud?")
+            #TODO: return an error message
+        # Check funds go into the correct account
+        if not parameters['receiver_email'] == 'niklausumiker@gmail.com' and not parameters['receiver_email'] == 'niklausumiker-facilitator@gmail.com':
+            logging.warning("Incorrect receiver email: " + parameters['receiver_email'])
+            return  
+        if not parameters['mc_currency'] == 'CHF':
+            logging.warning("Incorrect currency: " + parameters['mc_currency'])
+            return
+    
+        student_email = parameters['custom']
+        
+        # Check payment is completed, not Pending or Failed.      
+        if parameters['payment_status'] == 'Completed':
+            
+            student = Student.get_enrolled_student_by_email(student_email)
+            #student = (
+            #  models.StudentProfileDAO.get_enrolled_student_by_email_for(
+            #    student_email, self.app_context))
+            if not student:
+                logging.warning('Could not process payment for student: ' + student_email) 
+                self.send_error_email(student_email)
+                return
+            logging.info('Student %s is now a full access student. Payment confirmed.' % student_email)
+            student.has_paid = True
+            student.put()
   
-  def get(self):
-    self.post()
+    def get(self):
+        self.post()
     
   
-  def send_error_email(self, email):
-    from modules.notifications import notifications
-    notifications.Manager.send_async(
-        'danieldanciu75@gmail.com', #,info@germanteacher.ch
-        'schweizerdeutschonline@appspot.gserviceaccount.com',
-        'unprocessed_payment',
-        ('User %s paid for the course, but we found no student with this address.' % email),
-        'User paid for course, but we could not enable access'
-    )
-    notifications.Manager.send_async(
-        email,
-        'schweizerdeutschonline@appspot.gserviceaccount.com',
-        'unprocessed_payment',
-        """For reasons beyond my understanding, I couldn\'t enable access to http://ch-de.ch. 
-        Please request a PayPal refund or contact a human at danieldanciu75@gmail.com to see what went wrong.
+    def send_error_email(self, email):
+        from modules.notifications import notifications
+        notifications.Manager.send_async(
+            'danieldanciu75@gmail.com', #,info@germanteacher.ch
+            'schweizerdeutschonline@appspot.gserviceaccount.com',
+            'unprocessed_payment',
+            ('User %s paid for the course, but we found no student with this address.' % email),
+            'User paid for course, but we could not enable access'
+        )
+        notifications.Manager.send_async(
+            email,
+            'schweizerdeutschonline@appspot.gserviceaccount.com',
+            'unprocessed_payment',
+            """For reasons beyond my understanding, I couldn\'t enable access to http://ch-de.ch. 
+            Please request a PayPal refund or contact a human at danieldanciu75@gmail.com to see what went wrong.
+            
+            Thanks,
+            Your ch-de.ch overwhelmed robot.""",
+            'We couldn\'t enable access to ch-de.ch'
+        )
         
-        Thanks,
-        Your ch-de.ch overwhelmed robot.""",
-        'We couldn\'t enable access to ch-de.ch'
-    )
+
 class NoopInstanceLifecycleRequestHandler(webapp2.RequestHandler):
     """Noop Handler for internal App Engine instance lifecycle requests.
 

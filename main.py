@@ -25,7 +25,6 @@ import webapp2
 import appengine_config  # pylint: disable-msg=unused-import
 
 from controllers import sites
-from controllers import utils
 from models import analytics
 from models import custom_modules
 from models import data_sources
@@ -68,8 +67,12 @@ if appengine_config.gcb_appstats_enabled():
         assert '.*' == path[:2]
         appstats_routes.append(('/admin/stats/%s' % path[3:], handler))
 
+# This is where Paypal's IPN (Instant Payment Notification) comes in
 payment_routes = []
-payment_routes.append(('/payment/idn', utils.PaymentHandler))
+payment_routes.append(('/payment/ipn', utils.PaymentHandler))
+payment_routes.append(('/payment/success', utils.PaymentSuccessHandler))
+payment_routes.append(('/payment/cancel', utils.PaymentCancelHandler))
+
 
 # i18n configuration for jinja2
 webapp2_i18n_config = {'translations_path': os.path.join(
