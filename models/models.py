@@ -242,6 +242,7 @@ class MemcacheManager(object):
             return value
 
         value = memcache.get(key, namespace=_namespace)
+        #logging.debug("Read value %s of key %s from namespace %s", value, key, _namespace)
 
         # We store some objects in memcache that don't evaluate to True, but are
         # real objects, '{}' for example. Count a cache miss only in a case when
@@ -292,7 +293,7 @@ class MemcacheManager(object):
                     _namespace = cls._get_namespace(namespace)
                     memcache.set(key, value, ttl, namespace=_namespace)
                     cls._local_cache_put(key, _namespace, value)
-                    logging.info('Saved key %s in memcache' % key)
+                    logging.info('Saved key %s in memcache with namespace %s' % (key, _namespace))
                     return True
         except:  # pylint: disable-msg=bare-except
             logging.exception(
@@ -994,30 +995,24 @@ class Student(BaseEntity):
     @classmethod
     def get_enrolled_student_by_email(cls, email):
         """Returns enrolled student or None."""
-        old_namespace = namespace_manager.get_namespace()
-        logging.debug("Saving old namespace %s" % old_namespace)
-        try:
-            #TODO: this is a hack that limits this method to work only witht he ns_sample namespace
-            #namespace_manager.set_namespace('ns_sample')
-            students = cls.all().fetch(limit=10)
-            logging.debug("All students are: ")
-            for student in students:
-                logging.debug(student)
-            student = MemcacheManager.get(cls._memcache_key(email))
-            if NO_OBJECT == student:
-                return None
-            if not student:
-                student = Student.get_by_email(email)
-                if student:
-                    MemcacheManager.set(cls._memcache_key(email), student)
-                else:
-                    MemcacheManager.set(cls._memcache_key(email), NO_OBJECT)
-            if student and student.is_enrolled:
-                return student
+        #students = cls.all().fetch(limit=10)
+        #logging.debug("All students are: ")
+        #for student in students:
+        #    logging.debug(student)
+        student = MemcacheManager.get(cls._memcache_key(email))
+        if NO_OBJECT == student:
+            return None
+        if not student:
+            student = Student.get_by_email(email)
+            if student:
+                MemcacheManager.set(cls._memcache_key(email), student)
             else:
-                return None
-        finally:
-            namespace_manager.set_namespace(old_namespace)
+                MemcacheManager.set(cls._memcache_key(email), NO_OBJECT)
+        logging.debug("Loaded student: %s" % student)
+        if student and student.is_enrolled:
+            return student
+        else:
+            return None
 
     @classmethod
     def _get_user_and_student(cls):
@@ -1087,7 +1082,7 @@ class Student(BaseEntity):
                     common_utils.text_to_list(self.labels)
                     if int(label) in label_ids])
     def __str__(self):
-        return 'Id: ' + str(self.user_id) + "Name: " + self.name + " Email: " + self.key().name() + (self.profile() if self.profile != None else "")
+        return "Id: %s Name: %s Email: %s Profile: %s Paid: %s" % (self.user_id, self.name, self.key().name(), self.profile, self.has_paid)
 
 class TransientStudent(object):
     """A transient student (i.e. a user who hasn't logged in or registered)."""

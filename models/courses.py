@@ -878,6 +878,7 @@ class PersistentCourse13(object):
 
     COURSES_FILENAME = 'data/course.json'
     CHUNK_SIZE = 1000000
+    FREE_UNIT_IDS = [224, 2, 14, 25, 68, 69]
 
     def __init__(self, next_id=None, units=None, lessons=None):
         self.version = CourseModel13.VERSION
@@ -914,6 +915,8 @@ class PersistentCourse13(object):
                 unit = Unit13()
                 transforms.dict_to_instance(
                     unit_dict, unit, defaults=Unit13.DEFAULT_VALUES)
+                unit.is_paid = False if verify.UNIT_TYPE_UNIT == unit.type and unit.unit_id in PersistentCourse13.FREE_UNIT_IDS else True
+                logging.debug("Loaded unit with id %s and title %s paid: %s" % (unit.unit_id, unit.title, unit.is_paid))
                 self.units.append(unit)
 
         self.lessons = []
@@ -1041,23 +1044,23 @@ class CachedCourse13(AbstractCachedObject):
         
     @classmethod
     def load(cls, app_context):
-      key = cls._make_key()
-      if cls.SINGLETON_KEY == key:
-        print "=========== YAAAY! Instantly returned cached course instance"
-        return cls.SINGLETON_INSTANCE
-      else:
-        cached_course = super(CachedCourse13, cls).load(app_context)
-        if cached_course:
-          cls.SINGLETON_KEY = key
-          cls.SINGLETON_INSTANCE = cached_course
-          return cached_course
-        return None
+        key = cls._make_key()
+        if cls.SINGLETON_KEY == key:
+            logging.debug("Returned a cached course instance")
+            return cls.SINGLETON_INSTANCE
+        else:
+            cached_course = super(CachedCourse13, cls).load(app_context)
+            if cached_course:
+                cls.SINGLETON_KEY = key
+                cls.SINGLETON_INSTANCE = cached_course
+                return cached_course
+            return None
 
     @classmethod
     def delete(cls, app_context, override_readonly=False):
-      cls.SINGLETON_KEY = None
-      cls.SINGLETON_INSTANCE = None
-      super(CachedCourse13, cls).delete(app_context, override_readonly)
+        cls.SINGLETON_KEY = None
+        cls.SINGLETON_INSTANCE = None
+        super(CachedCourse13, cls).delete(app_context, override_readonly)
        
 class CourseModel13(object):
     """A course defined in terms of objects (version 1.3)."""

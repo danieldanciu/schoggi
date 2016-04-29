@@ -20,6 +20,7 @@ import copy
 import datetime
 import urllib
 import urlparse
+import logging
 
 from utils import BaseHandler
 from utils import BaseRESTHandler
@@ -286,6 +287,10 @@ class CourseHandler(BaseHandler):
             # to the last page they were looking at.
             last_location = self.get_redirect_location(student)
             if last_location:
+                referer = self.request.referer
+                logging.debug('REferer is %s' % referer)
+                if'paypal' in referer:
+                    last_location = last_location + '&payment_success'
                 self.redirect(last_location)
                 return
 
@@ -376,6 +381,7 @@ class UnitHandler(BaseHandler):
         try:
             student = self.personalize_page_and_get_enrolled(
                 supports_transient_student=True)
+            logging.debug("UnitHandler. Student is %s" % student)
             if not student:
                 return
 
@@ -401,6 +407,8 @@ class UnitHandler(BaseHandler):
             self.template_value['student'] = student
             from google.appengine.api import users
             self.template_value['user'] = users.get_current_user()
+            self.template_value['just_paid'] = 'payment_success' in self.request.params
+            logging.debug("Just paid is %s" % self.template_value['just_paid'])
             
             # These attributes are needed in order to render questions (with
             # progress indicators) in the lesson body. They are used by the

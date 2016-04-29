@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from symbol import parameters
 import logging
 
 """Handlers that are not directly related to course content."""
@@ -30,6 +29,7 @@ import sites
 import webapp2
 
 import appengine_config
+from google.appengine.api import namespace_manager
 from common import jinja_utils
 from common import locales
 from common import safe_dom
@@ -938,6 +938,8 @@ class PaymentHandler(BaseHandler):
     
         student_email = parameters['custom']
         
+        # [hack] this handler will only work for the ns_sample namespace
+        namespace_manager.set_namespace('ns_sample')
         # Check payment is completed, not Pending or Failed.      
         if parameters['payment_status'] == 'Completed':
             
