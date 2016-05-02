@@ -38,16 +38,22 @@
   {% endif %}
 
 {% elif lesson.now_available and unit.is_paid and not (student and student.has_paid) %}
+   {% if invalid_access_code %}
+      <div id="invalid-access-code" class="gcb-error-tag">
+        {{ gettext('Invalid access code.') }}
+      </div>
+   {% endif %}
   <h1 class="gcb-lesson-title">
     {{ lesson.title }}
   </h1>
   <br><br>
   <div>
     {% if just_paid %}
-      {{ gettext('Thank you for your payment! Your payment is being processed, please refresh this page in 1-2 minutes.') }}
+      {{ gettext('Thank you for your payment! Your payment is being processed, the lesson will be  available in 1-2 minutes.') }}
+      <meta http-equiv="refresh" content="10" >
     {% else %} 
 	    {# I18N: Text shown for a lesson that was not paid for. #}
-	    {{ gettext('This lesson is only available to premium users. Buy access to the entire course for only 49 CHF')}}
+	    {{ gettext('Lessons 6 to 30 are only available to paid users. Permanent access to the entire course costs only 49 CHF.')}}
 	    <!--  This is the production payment button. Uncomment when ready for production payments -->
 	    <!--form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 			<input type="hidden" name="cmd" value="_s-xclick">
@@ -64,6 +70,15 @@
 			<input type="image" src="https://www.sandbox.paypal.com/en_US/CH/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 			<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
+		
+		<div>
+		  <p>If you have an access code, enter it here:</p>
+		  <form action="/sample/access_code" method="post">
+		  <input type="text" name="access_code">
+		  <input type="hidden" name="student_email" value="{{user.email()}}">
+		  <input type="submit" value="Submit">
+		</form>
+		</div>
 	{% endif %}
   </div>
 

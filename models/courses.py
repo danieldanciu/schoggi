@@ -878,7 +878,7 @@ class PersistentCourse13(object):
 
     COURSES_FILENAME = 'data/course.json'
     CHUNK_SIZE = 1000000
-    FREE_UNIT_IDS = [224, 2, 14, 25, 68, 69]
+    FREE_UNIT_IDS = [224, 2, 14, 25]
 
     def __init__(self, next_id=None, units=None, lessons=None):
         self.version = CourseModel13.VERSION

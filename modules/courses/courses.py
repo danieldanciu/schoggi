@@ -82,7 +82,8 @@ def register_module():
         ('/student/settracks', utils.StudentSetTracksHandler),
         ('/student/home', utils.StudentProfileHandler),
         ('/student/unenroll', utils.StudentUnenrollHandler),
-        ('/unit', lessons.UnitHandler)]
+        ('/unit', lessons.UnitHandler),
+        ('/access_code', utils.AccessCodeHandler)]
 
     global custom_module
     custom_module = custom_modules.Module(

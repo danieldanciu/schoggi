@@ -265,6 +265,7 @@ class CourseHandler(BaseHandler):
     def get(self):
         """Handles GET requests."""
         models.MemcacheManager.begin_readonly()
+        logging.debug("Coursehandler GET")
         try:
             user = self.personalize_page_and_get_user()
             if user is None:
@@ -287,10 +288,6 @@ class CourseHandler(BaseHandler):
             # to the last page they were looking at.
             last_location = self.get_redirect_location(student)
             if last_location:
-                referer = self.request.referer
-                logging.debug('REferer is %s' % referer)
-                if'paypal' in referer:
-                    last_location = last_location + '&payment_success'
                 self.redirect(last_location)
                 return
 
@@ -408,6 +405,7 @@ class UnitHandler(BaseHandler):
             from google.appengine.api import users
             self.template_value['user'] = users.get_current_user()
             self.template_value['just_paid'] = 'payment_success' in self.request.params
+            self.template_value['invalid_access_code'] = 'invalid_access_code' in self.request.params
             logging.debug("Just paid is %s" % self.template_value['just_paid'])
             
             # These attributes are needed in order to render questions (with

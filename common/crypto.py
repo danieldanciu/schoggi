@@ -275,3 +275,41 @@ def generate_transform_secret_from_xsrf_token(xsrf_token, action):
     return base64.urlsafe_b64encode(
         ''.join(chr(r.getrandbits(8)) for unused in range(
             int(ENCRYPTION_SECRET_LENGTH * 0.75))))
+    
+def _digit32_to_char(digit32):
+    assert digit32 >= 0 and digit32 < 32
+    if digit32 < 10:
+        return chr(ord('0') + digit32)
+    return chr(ord('A') + digit32-10)
+
+def _char_to_digit_32(char):
+    if char >= '0' and char <= '9':
+        return ord(char) - ord('0')
+    return ord(char.upper()) - ord('A')
+
+HMAC_KEY='a;sldkjaweruoalksjdf'
+
+def verify_access_code(access_code):
+    access_code = access_code.strip()
+    if len(access_code) != 6:
+        return False
+    to_encode = access_code[0:3].upper()
+    crypt = hmac.new(HMAC_KEY, to_encode)
+    encoded = base64.b32encode(crypt.digest())[0:3]
+    return encoded == access_code[3:6].upper()
+
+def generate_access_code():
+    """ Generates a not very secure, but secure enough for 49 CHF 6 character access code.
+        The first 3 characters are random base 32 and the next 3 are the prefix of their MD5 HMAC """
+    to_encode = _digit32_to_char(random.randrange(32)) + _digit32_to_char(random.randrange(32)) + _digit32_to_char(random.randrange(32))
+    crypt = hmac.new(HMAC_KEY, to_encode)
+    encoded = base64.b32encode(crypt.digest())[0:3]
+    return to_encode+encoded
+
+def main():
+    print generate_access_code()
+    print verify_access_code(generate_access_code())
+    print verify_access_code(generate_access_code().lower())
+
+if __name__ == "__main__":
+    main()

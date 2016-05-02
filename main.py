@@ -70,8 +70,6 @@ if appengine_config.gcb_appstats_enabled():
 # This is where Paypal's IPN (Instant Payment Notification) comes in
 payment_routes = []
 payment_routes.append(('/payment/ipn', utils.PaymentHandler))
-payment_routes.append(('/payment/success', utils.PaymentSuccessHandler))
-payment_routes.append(('/payment/cancel', utils.PaymentCancelHandler))
 
 
 # i18n configuration for jinja2

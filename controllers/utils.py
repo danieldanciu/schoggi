@@ -30,7 +30,7 @@ import webapp2
 
 import appengine_config
 from google.appengine.api import namespace_manager
-from common import jinja_utils
+from common import jinja_utils, crypto
 from common import locales
 from common import safe_dom
 from common import tags
@@ -730,14 +730,21 @@ class BaseHandler(CourseHandler):
                 models.StudentPreferencesDAO.save(prefs)
 
     def get_redirect_location(self, student):
+        logging.debug("redirecting for student %s" % student)
         if (not student.is_transient and
             (self.request.path == self.app_context.get_slug() or
              self.request.path == self.app_context.get_slug() + '/' or
              self.request.get('use_last_location'))):  # happens on '/' page
             prefs = models.StudentPreferencesDAO.load_or_create()
+            logging.debug("Preferences are: %s" % prefs.last_location)
             # Belt-and-suspenders: prevent infinite self-redirects
             if (prefs.last_location and
                 prefs.last_location != self.request.path_qs):
+                logging.debug("Payment success is: %s" % self.request.get('payment_success'))
+                if self.request.get('payment_success'):
+                    prefs.last_location = prefs.last_location + '&payment_success'
+                if self.request.get('invalid_access_code'):
+                    prefs.last_location = prefs.last_location + '&invalid_access_code'
                 return prefs.last_location
         return None
 
@@ -881,24 +888,45 @@ class RegisterHandler(BaseHandler):
         # Render registration confirmation page
         self.redirect('/course#registration_confirmation')
 
-class PaymentSuccessHandler(BaseHandler):
-    """ Display a message to the user that payment was successful """
+class AccessCodeHandler(BaseHandler):
+    """ Verifies an access code and redirects back to the last location """
     def post(self):
         self.get()
     
     def get(self):
-        self.render("paid.html")
+        if self.request.POST:
+            parameters = self.request.POST.copy()
+        if self.request.GET:
+            parameters = self.request.GET.copy()
+        logging.debug('Received access code verification: ' + str(parameters))
         
-class PaymentCancelHandler(BaseHandler):
-    """ Display a message to the user that payment was successful """
-    def post(self):
-        self.get()
-    
-    def get(self):
-        student = self.personalize_page_and_get_enrolled()
-        if not student:
-            return
-        self.render("not_paid.html")
+        student_email = parameters['student_email']
+        # Check payment is completed, not Pending or Failed.
+        access_code = parameters['access_code']      
+        if access_code is not None and crypto.verify_access_code(access_code):
+            if len(Student.get_by_access_code(access_code)) == 0:
+                # [hack] this handler will only work for the ns_sample namespac
+                namespace_manager.set_namespace('ns_sample')    
+                student = Student.get_enrolled_student_by_email(student_email)
+                #student = (
+                #  models.StudentProfileDAO.get_enrolled_student_by_email_for(
+                #    student_email, self.app_context))
+                if not student:
+                    logging.warning('Could not process payment for student: ' + student_email) 
+                    self.send_error_email(student_email)
+                    return
+                logging.info('Student %s is now a full access student. Access code %s confirmed.' % (student_email, access_code))
+                student.has_paid = True
+                student.access_code = access_code
+                student.put()
+                self.redirect("/sample?use_last_location=true")
+            else:
+                logging.warning('Student %s tried an already used access code: %s' % (student_email, access_code))
+                self.redirect("/sample?use_last_location=true&invalid_access_code=true")
+        else:
+            logging.info('Student %s tried an invalid access code: %s' % (student_email, access_code))
+            self.redirect("/sample?use_last_location=true&invalid_access_code=true")
+
 
 class PaymentHandler(BaseHandler):
     """ Handles payment-related requests from PayPal """
@@ -953,6 +981,7 @@ class PaymentHandler(BaseHandler):
                 return
             logging.info('Student %s is now a full access student. Payment confirmed.' % student_email)
             student.has_paid = True
+            student.access_code = 'PayPal'
             student.put()
   
     def get(self):

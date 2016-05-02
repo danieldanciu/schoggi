@@ -717,7 +717,7 @@ class StudentProfileDAO(object):
 
     @classmethod
     def _update_course_profile_attributes(
-        cls, student, nick_name=None, is_enrolled=None, labels=None, has_paid=None):
+        cls, student, nick_name=None, is_enrolled=None, labels=None, has_paid=None, access_code = None):
         """Modifies various attributes of Student's Course Profile."""
 
         if nick_name is not None:
@@ -730,14 +730,17 @@ class StudentProfileDAO(object):
             student.labels = labels
         
         if has_paid is not None:
-          student.has_paid = has_paid 
+            student.has_paid = has_paid
+        
+        if access_code is not None:
+            student.access_code = access_code 
 
     @classmethod
     def _update_attributes(
         cls, profile, student,
         email=None, legal_name=None, nick_name=None,
         date_of_birth=None, is_enrolled=None, final_grade=None,
-        course_info=None, labels=None, has_paid=None):
+        course_info=None, labels=None, has_paid=None, access_code = None):
         """Modifies various attributes of Student and Profile."""
 
         if profile:
@@ -750,7 +753,7 @@ class StudentProfileDAO(object):
         if student:
             cls._update_course_profile_attributes(
                 student, nick_name=nick_name, is_enrolled=is_enrolled,
-                labels=labels, has_paid=has_paid)
+                labels=labels, has_paid=has_paid, access_code=access_code)
 
     @classmethod
     def _put_profile(cls, profile):
@@ -776,7 +779,7 @@ class StudentProfileDAO(object):
 
     @classmethod
     def add_new_student_for_current_user(
-        cls, nick_name, additional_fields, handler, labels=None, has_paid=None):
+        cls, nick_name, additional_fields, handler, labels=None, has_paid=None, access_code=None):
         user = users.get_current_user()
         logging.debug("User is " + str(user))
 
@@ -789,7 +792,7 @@ class StudentProfileDAO(object):
             'Student\'s email and user id do not match.')
 
         cls._add_new_student_for_current_user(
-            user.user_id(), user.email(), nick_name, additional_fields, labels, has_paid)
+            user.user_id(), user.email(), nick_name, additional_fields, labels, has_paid, access_code)
 
         try:
             cls._send_welcome_notification(handler, user.email())
@@ -800,7 +803,7 @@ class StudentProfileDAO(object):
     @classmethod
     @db.transactional(xg=True)
     def _add_new_student_for_current_user(
-        cls, user_id, email, nick_name, additional_fields, labels=None, has_paid=None):
+        cls, user_id, email, nick_name, additional_fields, labels=None, has_paid=None, access_code=None):
         """Create new or re-enroll old student."""
 
         # create profile if does not exist
@@ -817,7 +820,7 @@ class StudentProfileDAO(object):
         # update profile
         cls._update_attributes(
             profile, student, nick_name=nick_name, is_enrolled=True,
-            labels=labels, has_paid=has_paid)
+            labels=labels, has_paid=has_paid, access_code=access_code)
 
         # update student
         student.user_id = user_id
@@ -896,7 +899,7 @@ class StudentProfileDAO(object):
     def update(
         cls, user_id, email, legal_name=None, nick_name=None,
         date_of_birth=None, is_enrolled=None, final_grade=None,
-        course_info=None, labels=None, profile_only=False, has_paid=None):
+        course_info=None, labels=None, profile_only=False, has_paid=None, access_code=None):
         """Updates a student and/or their global profile."""
         student = None
         if not profile_only:
@@ -912,7 +915,7 @@ class StudentProfileDAO(object):
             profile, student, email=email, legal_name=legal_name,
             nick_name=nick_name, date_of_birth=date_of_birth,
             is_enrolled=is_enrolled, final_grade=final_grade,
-            course_info=course_info, labels=labels, has_paid=has_paid)
+            course_info=course_info, labels=labels, has_paid=has_paid, access_code=access_code)
 
         cls._put_profile(profile)
         if not profile_only:
@@ -927,6 +930,7 @@ class Student(BaseEntity):
     additional_fields = db.TextProperty(indexed=False)
     is_enrolled = db.BooleanProperty(indexed=False)
     has_paid = db.BooleanProperty(indexed=False)
+    access_code = db.StringProperty(indexed=True)
 
     # Each of the following is a string representation of a JSON dict.
     scores = db.TextProperty(indexed=False)
@@ -983,11 +987,15 @@ class Student(BaseEntity):
 
     @classmethod
     def add_new_student_for_current_user(
-        cls, nick_name, additional_fields, handler, labels=None, has_paid=None):
+        cls, nick_name, additional_fields, handler, labels=None, has_paid=None, access_code=None):
         logging.debug("Adding new student " + nick_name)
         StudentProfileDAO.add_new_student_for_current_user(
-            nick_name, additional_fields, handler, labels, has_paid)
+            nick_name, additional_fields, handler, labels, has_paid, access_code)
 
+    @classmethod
+    def get_by_access_code(cls, access_code):
+        return cls.all().filter(cls.access_code.name, access_code).fetch(limit=1)
+    
     @classmethod
     def get_by_email(cls, email):
         return Student.get_by_key_name(email.encode('utf8'))
@@ -1046,6 +1054,13 @@ class Student(BaseEntity):
         _, student = cls._get_user_and_student()
         StudentProfileDAO.update(
             student.user_id, student.email, has_paid=has_paid)
+        
+    @classmethod
+    def set_access_code_for_current(cls, access_code):
+        """Changes student paid status."""
+        _, student = cls._get_user_and_student()
+        StudentProfileDAO.update(
+            student.user_id, student.email, access_code=access_code)
 
 
     @classmethod
@@ -1082,7 +1097,7 @@ class Student(BaseEntity):
                     common_utils.text_to_list(self.labels)
                     if int(label) in label_ids])
     def __str__(self):
-        return "Id: %s Name: %s Email: %s Profile: %s Paid: %s" % (self.user_id, self.name, self.key().name(), self.profile, self.has_paid)
+        return "Id: %s Name: %s Email: %s Profile: %s Paid: %s AccessCode: %s" % (self.user_id, self.name, self.key().name(), self.profile, self.has_paid, self.access_code)
 
 class TransientStudent(object):
     """A transient student (i.e. a user who hasn't logged in or registered)."""
@@ -1098,6 +1113,10 @@ class TransientStudent(object):
     @property
     def has_paid(self):
         return False
+    
+    @property
+    def access_code(self):
+        return None
 
 class EventEntity(BaseEntity):
     """Generic events.
