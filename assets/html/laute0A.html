@@ -13,20 +13,23 @@ p {
 <script src="assets/lib/lesson.js">
 </script>
 <script>
-var wordList_s_sch = ["Herbst", "Gast", "Post"];
-var wordList_au_u = ["auf", "Haus", "laut"];
-var wordList_ge_g = ["besetzt", "gemacht", "gewohnt"];
-var wordList_ei_i = ["bei", "Schweiz", "weil"];
-var wordList_eu_ue = ["Freund", "Häuser", "Zeug"];
-var wordList_i_ie = ["nie", "Buch", "Buecher"];
-var wordList_k_ch = ["Keller", "Koch", "Krone"];
-var wordList_ch__ = ["auch", "durch", "Zuerich"];
-var wordList_e__ = ['Kollege', 'Strasse', 'Sprache'];
-var wordList_n__ = ['nein', 'Italien', 'trinken'];
-var wordList_ung_ig = ['Wohnung','Ahnung','Rechnung'];
-var wordList_er_ere = ['Nummer', 'Oper', 'Wimper'];
-var wordList_el_le = ['Gabel', 'Insel', 'Schluessel'];
-var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
+// to be used with the more flexible playAll() function defined in lesson.js
+// right now we have the wordlists recorded as a group, so we are using them as such
+// but if we want to change a word in a group, we need to re-record the entire group
+var wordlist_s_sch = ["Herbst", "Gast", "Post"];
+var wordlist_au_u = ["auf", "Haus", "laut"];
+var wordlist_ge_g = ["besetzt", "gemacht", "gewohnt"];
+var wordlist_ei_i = ["bei", "Schweiz", "weil"];
+var wordlist_eu_ue = ["Freund", "Häuser", "Zeug"];
+var wordlist_i_ie = ["nie", "Buch", "Buecher"];
+var wordlist_k_ch = ["Keller", "Koch", "Krone"];
+var wordlist_ch__ = ["auch", "durch", "Zuerich"];
+var wordlist_e__ = ['Kollege', 'Strasse', 'Sprache'];
+var wordlist_n__ = ['nein', 'Italien', 'trinken'];
+var wordlist_ung_ig = ['Wohnung','Ahnung','Rechnung'];
+var wordlist_er_ere = ['Nummer', 'Oper', 'Wimper'];
+var wordlist_el_le = ['Gabel', 'Insel', 'Schluessel'];
+var wordlist_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 </script>
 <audio id="chd-wort" src=""></audio>  
 <div class="WordSection1 yui-wk-div">
@@ -46,7 +49,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
           <p>
             <b><span>s &gt; sch</span></b> <span style="float: right">
              
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_s_sch)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/s-sch.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle" class="selected">
               </button>
             </span>
@@ -85,7 +88,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>au &gt; u</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_au_u)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/au-u.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="au-u"></audio>
               </button>
@@ -124,7 +127,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>ge- &gt; g-</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_ge_g)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/ge-g.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="ge-g"></audio>
               </button>
@@ -164,7 +167,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>ei&gt; i</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_ei_i)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/ei-i.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="ei-i"></audio>
               </button>
@@ -203,7 +206,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>eu &gt; ü</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_eu_ue)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/eu-ue.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="eu-u"></audio>
               </button>
@@ -243,7 +246,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>i/u/ü &gt; ie/ue/üe</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_i_ie)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/u-ue.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="i-ie"></audio>
               </button>
@@ -281,7 +284,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>k &gt; ch</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_k_ch)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/k-ch.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="k-ch"></audio>
               </button>
@@ -311,7 +314,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-ch &gt; -</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_ch__')">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/ch--.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="ch-"></audio>
               </button>
@@ -348,7 +351,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-e &gt; -</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_e__')">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-e--.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="e-"></audio>
               </button>
@@ -385,7 +388,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-n &gt; -</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_n__)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-n--.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="n-"></audio>
               </button>
@@ -422,7 +425,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-ung &gt; -ig</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_ung_ig)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-ung-ig.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="ung-ig"></audio>
               </button>
@@ -459,7 +462,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-r &gt; -re</span></b>  (feminin) <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_er_ere)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-er-ere.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="r-re"></audio>
               </button>
@@ -495,7 +498,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-el &gt; -le</span></b>  (feminin) <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_el_le)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-el-le.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="r-re"></audio>
               </button>
@@ -515,7 +518,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
           </p>
 
           <p>
-            <span>Sclhüss<span style="background: yellow">el</span></span><span style="font-size: 10.0pt; font-family: 'Sylfaen', 'serif'"></span>
+            <span>Schüss<span style="background: yellow">el</span></span><span style="font-size: 10.0pt; font-family: 'Sylfaen', 'serif'"></span>
           </p>
 
         </div>
@@ -531,7 +534,7 @@ var wordList_chen_li = ['Baeumchen', 'Huendchen', 'Tischen'];
 
           <p>
             <b><span>-chen &gt; -li</span></b> <span style="float: right">
-              <button class="gcb-button-speaker" onclick="playAudioAll(this, wordList_chen_li)">
+              <button class="gcb-button-speaker" onclick="playAudioFile(this, 'lektion0/-chen-li.mp3')">
                 <img src="assets/img/speaker_icon32.png" style="vertical-align: middle">
                 <audio id="r-re"></audio>
               </button>

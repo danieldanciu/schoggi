@@ -10,7 +10,7 @@ public class Rename {
 		    if (Files.isRegularFile(filePath)) {
 		    	System.out.print("Rename " + filePath + " to: ");
 		    	File original = filePath.toFile();
-		    	File dest = new File(original.getAbsolutePath().replace("Ä", "Ae").replace("Ö", "Oe").replace("Ü", "Ue").replace("ü", "ue").replace("ö", "oe").replace("ä", "ae").replace(" ", ""));
+		    	File dest = new File(original.getAbsolutePath().replace("Ä", "Ae").replace("Ö", "Oe").replace("Ü", "Ue").replace("ü", "ue").replace("ö", "oe").replace("ä", "ae").replace(" ", "").toLowerCase());
 				original.renameTo(dest);
 		        System.out.println(dest);
 		    }

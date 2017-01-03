@@ -7,7 +7,7 @@ function replaceUmlauts(string)
   string = string.replace(/Ö/g, 'Oe');
   string = string.replace(/Ü/g, 'Ue');
   string = string.replace(' ', '');
-  string = string.replace('/', '-');
+  //string = string.replace('/', '-');
   return string;
 }
 
