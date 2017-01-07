@@ -36,22 +36,27 @@ function onFileEnd() {
 }
 
 function playAudioAll(parent, audioFiles) {
-	    var playButton = document.getElementById('play_all');
-	    playButton.removeEventListener('click', playAudioAll);
-	    playButton.addEventListener('click', stopPlayAudioAll);
-		var audio = document.getElementById('chd-wort');
-		audio.removeEventListener('ended', onFileEnd);
-		audio.removeEventListener('error', onFileEnd);
-		audio.currentFile = 0;
-		audio.audioFiles = audioFiles;
-		audio.src=''
-		audio.addEventListener('ended', onFileEnd);
-		audio.addEventListener('error', onFileEnd);
-		audio.src = '/laute/' + replaceUmlauts(audioFiles[0]) + '.mp3';
-		audio.play();
+	document.getElementById('play-all-button-img').src = "http://www.clker.com/cliparts/P/B/P/j/q/O/pause-button-md.png";
+
+	var playButton = document.getElementById('play_all');
+    playButton.removeEventListener('click', playAudioAll);
+    playButton.addEventListener('click', stopPlayAudioAll);
+    
+	var audio = document.getElementById('chd-wort');
+	audio.removeEventListener('ended', onFileEnd);
+	audio.removeEventListener('error', onFileEnd);
+	audio.currentFile = 0;
+	audio.audioFiles = audioFiles;
+	audio.src=''
+	audio.addEventListener('ended', onFileEnd);
+	audio.addEventListener('error', onFileEnd);
+	audio.src = '/laute/' + replaceUmlauts(audioFiles[0]) + '.mp3';
+	audio.play();
 }
 
 function stopPlayAudioAll() {
+	document.getElementById('play-all-button-img').src = "assets/img/speaker_icon16.png";
+	
 	var playButton = document.getElementById('play_all');
 	playButton.removeEventListener('click', stopPlayAudioAll);
     playButton.addEventListener('click', playAudioAll);
