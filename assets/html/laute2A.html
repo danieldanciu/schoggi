@@ -1,43 +1,72 @@
 
-<style>
-.wrap {
-    height: 30px;
-}
-.noshow, .wrap:hover .show {
-    display: none
-}
-.wrap:hover .noshow {
-    display: block
-}
-</style>
-
-<style>
-p, table, th, td {
-    border: 0px transparent;
-    font-size:14.0pt;
-    font-family:'Sylfaen','serif'
-}
-</style>
+<script src="assets/lib/lesson.js"></script>
 <script>
-function playAudio(parent) {
-  var audio = document.getElementById('chd-wort');
-  audio.src = '/laute/' + parent.id + '.mp3';
-  audio.play();
-} 
+var wordList=["an",
+"auch",
+"Aufgabe",
+"Aufgaben",
+"Aussprache",
+"Buch",
+"Bücher",
+"Deutsch",
+"Deutschbuch",
+"Deutschbuecher",
+"Deutschschule",
+"Deutschschueler",
+"Deutschschuelerin",
+"Deutschuebung",
+"einfach",
+"Franzoesischbuch",
+"Franzoesischschuelerin",
+"gut",
+"guten Tag",
+"ich bin",
+"ich muss",
+"Ihnen",
+"in",
+"Kugelschreiber",
+"muessen",
+"nein",
+"schreiben",
+"Schulbuch",
+"Schulbuecher",
+"Schule",
+"Schulen",
+"Schueler",
+"Schuelerin",
+"Schweizerdeutsch",
+"Schweizerdeutschbuch",
+"Schweizerdeutschbuecher",
+"Schweizerdeutschuebungen",
+"Sprache",
+"Sprachen",
+"Sprachschule",
+"Sprachschulen",
+"Stuhl",
+"Stuehle",
+"ueben",
+"Uebung",
+"Uebungen",
+"Uebungsbuch",
+"Uebungsbuecher",
+"von",
+"Zuerich"];
+
 </script>
 
-<!--StartFragment-->
-<!--StartFragment-->
-<p>Lesen Sie die folgenden Wörter auf Schweizerdeutsch, indem Sie die Umformungsregeln anwenden.<br>Wenn Sie das Schweizerdeutsche Wort hören wollen, klicken Sie darauf.</p>
-<audio id="chd-wort" src="/laute/bucher.mp3"></audio>  
+<link rel="stylesheet" type="text/css" href="assets/css/lesson.css">
+<p>Lesen Sie die folgenden Wörter auf Schweizerdeutsch, indem Sie die Umformungsregeln anwenden.
+<br>Wenn Sie das Schweizerdeutsche Wort hören wollen, klicken Sie darauf.</p>
+<audio id="chd-wort" src=""></audio>  
 
-<script>
-function playAudio(parent) {
-  var audio = document.getElementById('chd-wort');
-  audio.src = '/laute/' + parent.id + '.mp3';
-  audio.play();
-} 
-</script>
+
+
+<p class="wrap" id="play_all" onclick="playAudioAll(this, wordList)">
+  Play All
+  <button class="gcb-button-speaker">
+  <img src="assets/img/speaker_icon16.png" style="vertical-align:middle">
+  </button>
+</p>
 
 
 
@@ -48,133 +77,133 @@ function playAudio(parent) {
 <tbody><tr><td width="50%" border="0">
 
 <p class="wrap" id="an" onclick="playAudio(this)">
-  a<span style="background:yellow">n</span>
+  a<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="auch" onclick="playAudio(this)">
-  au<span style="background:yellow">ch</span>
+  au<span style="background:orange">ch</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="aufgabe" onclick="playAudio(this)">
-  <span style="background:yellow">Au</span><span>fgab</span><span style="background: yellow;">e
+<p class="wrap" id="Aufgabe" onclick="playAudio(this)">
+  <span style="background:orange">Au</span><span>fgab</span><span style="background:orange;">e
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="aufgaben" onclick="playAudio(this)">
-  <span style="background:yellow">Au</span><span>fgabe</span><span style="background: yellow;">n
+<p class="wrap" id="Aufgaben" onclick="playAudio(this)">
+  <span style="background:orange">Au</span><span>fgabe</span><span style="background:orange;">n
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="aussprache" onclick="playAudio(this)">
-  <span style="background:yellow">Au</span><span>ssprach<span style="background:yellow">e</span>
+<p class="wrap" id="Aussprache" onclick="playAudio(this)">
+  <span style="background:orange">Au</span><span>ssprach<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="buch" onclick="playAudio(this)">
-  B<span style="background:yellow">u</span>ch
+<p class="wrap" id="Buch" onclick="playAudio(this)">
+  B<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="bucher" onclick="playAudio(this)">
-  B<span style="background:yellow">ü</span>cher
+<p class="wrap" id="Buecher" onclick="playAudio(this)">
+  B<span style="background:orange">ü</span>cher
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutsch" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tsch
+<p class="wrap" id="Deutsch" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tsch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschbuch" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tschb<span style="background:yellow">u</span>ch
+<p class="wrap" id="Deutschbuch" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tschb<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschbucher" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tschb<span style="background:yellow">ü</span>cher
+<p class="wrap" id="Deutschbuecher" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tschb<span style="background:orange">ü</span>cher
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschschule" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tschsch<span style="background:yellow">u</span>l<span style="background:yellow">e</span>
+<p class="wrap" id="Deutschschule" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tschsch<span style="background:orange">u</span>l<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschschuler" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tschsch<span style="background:yellow">ü</span>ler
+<p class="wrap" id="Deutschschueler" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tschsch<span style="background:orange">ü</span>ler
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschschulerin" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tschsch<span style="background:yellow">ü</span>leri<span style="background:yellow">n</span>
+<p class="wrap" id="Deutschschuelerin" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tschsch<span style="background:orange">ü</span>leri<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="deutschubung" onclick="playAudio(this)">
-  D<span style="background:yellow">eu</span>tsch<span style="background:yellow">ü</span>b<span style="background:yellow">ung</span>
+<p class="wrap" id="Deutschuebung" onclick="playAudio(this)">
+  D<span style="background:orange">eu</span>tsch<span style="background:orange">ü</span>b<span style="background:orange">ung</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="einfach" onclick="playAudio(this)">
-  ei<span style="background:yellow">n</span>fach
+  ei<span style="background:orange">n</span>fach
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="franzosischbuch" onclick="playAudio(this)">
-  Französischb<span style="background:yellow">u</span>ch
+<p class="wrap" id="Franzoesischbuch" onclick="playAudio(this)">
+  Französischb<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="franzosischschulerin" onclick="playAudio(this)">
-  Französischsch<span style="background:yellow">ü</span>leri<span style="background:yellow">n</span>
+<p class="wrap" id="Franzoesischschuelerin" onclick="playAudio(this)">
+  Französischsch<span style="background:orange">ü</span>leri<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="gut" onclick="playAudio(this)">
-  g<span style="background:yellow">u</span>t
+  g<span style="background:orange">u</span>t
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="gutentag" onclick="playAudio(this)">
-  g<span style="background:yellow">u</span>te<span style="background:yellow">n</span>
+<p class="wrap" id="gutenTag" onclick="playAudio(this)">
+  g<span style="background:orange">u</span>te<span style="background:orange">n</span>
 Tag
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
@@ -182,44 +211,42 @@ Tag
 </p>
 
 <p class="wrap" id="ichbin" onclick="playAudio(this)">
-  ich
-bi<span style="background:yellow">n</span>
+  ich bi<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="ichmuss" onclick="playAudio(this)">
-  ich
-m<span style="background:yellow">u</span>ss
+  ich m<span style="background:orange">u</span>ss
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="ihnen" onclick="playAudio(this)">
-  Ihne<span style="background:yellow">n</span>
+<p class="wrap" id="Ihnen" onclick="playAudio(this)">
+  Ihne<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="in" onclick="playAudio(this)">
-  i<span style="background:yellow">n</span>
+  i<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="kugelschreiber" onclick="playAudio(this)">
-  <span style="background:yellow">K</span><span>ugelschr<span style="background:yellow">ei</span>ber
+<p class="wrap" id="Kugelschreiber" onclick="playAudio(this)">
+  <span style="background:orange">K</span><span>ugelschr<span style="background:orange">ei</span>ber
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="mussen" onclick="playAudio(this)">
-  m<span style="background:yellow">ü</span>sse<span style="background:yellow">n</span>
+<p class="wrap" id="muessen" onclick="playAudio(this)">
+  m<span style="background:orange">ü</span>sse<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
@@ -228,175 +255,175 @@ m<span style="background:yellow">u</span>ss
 </td><td>
 
 <p class="wrap" id="nein" onclick="playAudio(this)">
-  nei<span style="background:yellow">n</span>
+  nei<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="schreiben" onclick="playAudio(this)">
-  schr<span style="background:yellow">ei</span>be<span style="background:yellow">n</span>
+  schr<span style="background:orange">ei</span>be<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schulbuch" onclick="playAudio(this)">
-  Sch<span style="background:yellow">u</span>lb<span style="background:yellow">u</span>ch
+<p class="wrap" id="Schulbuch" onclick="playAudio(this)">
+  Sch<span style="background:orange">u</span>lb<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schulbucher" onclick="playAudio(this)">
-  Sch<span style="background:yellow">u</span>lb<span style="background:yellow">ü</span>cher
+<p class="wrap" id="Schulbuecher" onclick="playAudio(this)">
+  Sch<span style="background:orange">u</span>lb<span style="background:orange">ü</span>cher
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schule" onclick="playAudio(this)">
-  Sch<span style="background:yellow">u</span>l<span style="background:yellow">e</span>
+<p class="wrap" id="Schule" onclick="playAudio(this)">
+  Sch<span style="background:orange">u</span>l<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schulen" onclick="playAudio(this)">
-  Sch<span style="background:yellow">u</span>le<span style="background:yellow">n</span>
+<p class="wrap" id="Schulen" onclick="playAudio(this)">
+  Sch<span style="background:orange">u</span>le<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schuler" onclick="playAudio(this)">
-  Sch<span style="background:yellow">ü</span>ler
+<p class="wrap" id="Schueler" onclick="playAudio(this)">
+  Sch<span style="background:orange">ü</span>ler
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schulerin" onclick="playAudio(this)">
-  Sch<span style="background:yellow">ü</span>leri<span style="background:yellow">n</span>
+<p class="wrap" id="Schuelerin" onclick="playAudio(this)">
+  Sch<span style="background:orange">ü</span>leri<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schweizerdeutsch" onclick="playAudio(this)">
-  Schw<span style="background:yellow">ei</span>zerd<span style="background:yellow">eu</span>tsch
+<p class="wrap" id="Schweizerdeutsch" onclick="playAudio(this)">
+  Schw<span style="background:orange">ei</span>zerd<span style="background:orange">eu</span>tsch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schweizerdeutschbuch" onclick="playAudio(this)">
-  Schw<span style="background:yellow">ei</span>zerd<span style="background:yellow">eu</span>tschb<span style="background:yellow">u</span>ch
+<p class="wrap" id="Schweizerdeutschbuch" onclick="playAudio(this)">
+  Schw<span style="background:orange">ei</span>zerd<span style="background:orange">eu</span>tschb<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schweizerdeutschbucher" onclick="playAudio(this)">
-  Schw<span style="background:yellow">ei</span>zerd<span style="background:yellow">eu</span>tschb<span style="background:yellow">ü</span>cher
+<p class="wrap" id="Schweizerdeutschbuecher" onclick="playAudio(this)">
+  Schw<span style="background:orange">ei</span>zerd<span style="background:orange">eu</span>tschb<span style="background:orange">ü</span>cher
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="schweizerdeutschubungen" onclick="playAudio(this)">
-  Schw<span style="background:yellow">ei</span>zerd<span style="background:yellow">eu</span>tsch<span style="background:yellow">ü</span>b<span style="background:yellow">ung</span>e<span style="background:yellow">n</span>
+<p class="wrap" id="Schweizerdeutschuebungen" onclick="playAudio(this)">
+  Schw<span style="background:orange">ei</span>zerd<span style="background:orange">eu</span>tsch<span style="background:orange">ü</span>b<span style="background:orange">ung</span>e<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="sprache" onclick="playAudio(this)">
-  Sprach<span style="background:yellow">e</span>
+<p class="wrap" id="Sprache" onclick="playAudio(this)">
+  Sprach<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="sprachen" onclick="playAudio(this)">
-  Sprache<span style="background:yellow">n</span>
+<p class="wrap" id="Sprachen" onclick="playAudio(this)">
+  Sprache<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="sprachschule" onclick="playAudio(this)">
-  Sprachsch<span style="background:yellow">u</span>l<span style="background:yellow">e</span>
+<p class="wrap" id="Sprachschule" onclick="playAudio(this)">
+  Sprachsch<span style="background:orange">u</span>l<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="sprachschulen" onclick="playAudio(this)">
-  Sprachsch<span style="background:yellow">u</span>le<span style="background:yellow">n</span>
+<p class="wrap" id="Sprachschulen" onclick="playAudio(this)">
+  Sprachsch<span style="background:orange">u</span>le<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="stuhl" onclick="playAudio(this)">
-  St<span style="background:yellow">u</span>hl
+<p class="wrap" id="Stuhl" onclick="playAudio(this)">
+  St<span style="background:orange">u</span>hl
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="stuhle" onclick="playAudio(this)">
-  St<span style="background:yellow">ü</span>hl<span style="background:yellow">e</span>
+<p class="wrap" id="Stuehle" onclick="playAudio(this)">
+  St<span style="background:orange">ü</span>hl<span style="background:orange">e</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
 <p class="wrap" id="üben" onclick="playAudio(this)">
-  <span style="background:yellow">ü</span><span>be<span style="background:yellow">n</span>
+  <span style="background:orange">ü</span><span>be<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="Ubung" onclick="playAudio(this)">
-  <span style="background:yellow">Ü</span><span>b<span style="background:yellow">ung</span>
+<p class="wrap" id="Uebung" onclick="playAudio(this)">
+  <span style="background:orange">Ü</span><span>b<span style="background:orange">ung</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="Ubungen" onclick="playAudio(this)">
-  <span style="background:yellow">Ü</span><span>b<span style="background:yellow">ung</span>e<span style="background:yellow">n</span>
+<p class="wrap" id="Uebungen" onclick="playAudio(this)">
+  <span style="background:orange">Ü</span><span>b<span style="background:orange">ung</span>e<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="Ubungsbuch" onclick="playAudio(this)">
-  <span style="background:yellow">Ü</span><span>b<span style="background:yellow">ung</span>sb<span style="background:yellow">u</span>ch
+<p class="wrap" id="Uebungsbuch" onclick="playAudio(this)">
+  <span style="background:orange">Ü</span><span>b<span style="background:orange">ung</span>sb<span style="background:orange">u</span>ch
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
-<p class="wrap" id="Ubungsbucher" onclick="playAudio(this)">
-  <span style="background:yellow">Ü</span><span>b<span style="background:yellow">ung</span>sb<span style="background:yellow">ü</span>cher
+<p class="wrap" id="Uebungsbuecher" onclick="playAudio(this)">
+  <span style="background:orange">Ü</span><span>b<span style="background:orange">ung</span>sb<span style="background:orange">ü</span>cher
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </span></p>
 
 <p class="wrap" id="von" onclick="playAudio(this)">
-  vo<span style="background:yellow">n</span>
+  vo<span style="background:orange">n</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>
 </p>
 
-<p class="wrap" id="zurich" onclick="playAudio(this)">
-  Zuri<span style="background:yellow">ch</span>
+<p class="wrap" id="Zuerich" onclick="playAudio(this)">
+  Zuri<span style="background:orange">ch</span>
   <button style="float:right" class="gcb-button-speaker noshow">
   <img style="vertical-align:middle" src="assets/img/speaker_icon16.png">
   </button>

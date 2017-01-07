@@ -36,14 +36,28 @@ function onFileEnd() {
 }
 
 function playAudioAll(parent, audioFiles) {
+	    var playButton = document.getElementById('play_all');
+	    playButton.removeEventListener('click', playAudioAll);
+	    playButton.addEventListener('click', stopPlayAudioAll);
 		var audio = document.getElementById('chd-wort');
 		audio.removeEventListener('ended', onFileEnd);
+		audio.removeEventListener('error', onFileEnd);
 		audio.currentFile = 0;
 		audio.audioFiles = audioFiles;
 		audio.src=''
 		audio.addEventListener('ended', onFileEnd);
+		audio.addEventListener('error', onFileEnd);
 		audio.src = '/laute/' + replaceUmlauts(audioFiles[0]) + '.mp3';
 		audio.play();
+}
+
+function stopPlayAudioAll() {
+	var playButton = document.getElementById('play_all');
+	playButton.removeEventListener('click', stopPlayAudioAll);
+    playButton.addEventListener('click', playAudioAll);
+    var audio = document.getElementById('chd-wort');
+	audio.removeEventListener('ended', onFileEnd);
+	audio.removeEventListener('error', onFileEnd);
 }
 
 
