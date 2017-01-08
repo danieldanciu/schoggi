@@ -389,6 +389,8 @@ a.gcb-button-action, button.gcb-button-action {
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    width: 24px;
+    height: 24px;
 }
 
 .gcb-button-author:hover {

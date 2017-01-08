@@ -36,7 +36,10 @@ function onFileEnd() {
 }
 
 function playAudioAll(parent, audioFiles) {
-	document.getElementById('play-all-button-img').src = "http://www.clker.com/cliparts/P/B/P/j/q/O/pause-button-md.png";
+	var img = document.getElementById('play-all-button-img');
+	var width = img.clientWidth;
+	img.src = "assets/img/ic_stop_black_24dp_1x.png";
+	img.style.width = width;
 
 	var playButton = document.getElementById('play_all');
     playButton.removeEventListener('click', playAudioAll);
@@ -55,7 +58,7 @@ function playAudioAll(parent, audioFiles) {
 }
 
 function stopPlayAudioAll() {
-	document.getElementById('play-all-button-img').src = "assets/img/speaker_icon16.png";
+	document.getElementById('play-all-button-img').src = "assets/img/ic_play_black_24dp.png";
 	
 	var playButton = document.getElementById('play_all');
 	playButton.removeEventListener('click', stopPlayAudioAll);
@@ -63,6 +66,7 @@ function stopPlayAudioAll() {
     var audio = document.getElementById('chd-wort');
 	audio.removeEventListener('ended', onFileEnd);
 	audio.removeEventListener('error', onFileEnd);
+	audio.pause();
 }
 
 
