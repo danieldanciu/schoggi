@@ -464,11 +464,11 @@ class DashboardHandler(
         li_index = 1
         for lesson in course.get_lessons(unit.unit_id):
             if lesson.video:
-                icon = safe_dom.Element('img', src='assets/img/video.png')
+                icon = safe_dom.Element('img', src='assets/img/youtube-play.png')
             elif lesson.audio:
-                icon = safe_dom.Element('img', src='assets/img/audio.png')
+                icon = safe_dom.Element('img', src='assets/img/headphone.png')
             else:
-                icon = safe_dom.Element('img', src='assets/img/paper.png')
+                icon = safe_dom.Element('img', src='assets/img/file-document.png')
             li2 = safe_dom.Element('li').add_child(icon).add_child(
                 safe_dom.Element(
                     'a',
