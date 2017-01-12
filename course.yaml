@@ -126,8 +126,7 @@ preview:
 reg_form:
   # Header text for the course registration form.
   header_text: |
-    Welcome!  Please answer the following question, and you will be
-    enrolled in the course.
+    Welcome!  Please answer the following question, and you will be enrolled in the course.
 
   # HTML representing additional fields to include in the course
   # registration form, in addition to the student's name. These should
