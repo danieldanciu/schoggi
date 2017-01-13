@@ -32,6 +32,8 @@ function onFileEnd() {
     audio.pause();
     audio.load();
     audio.play();
+  } else {
+	  stopPlayAudioAll();
   }
 }
 
