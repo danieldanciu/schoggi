@@ -367,7 +367,7 @@ class AbstractCachedObject(object):
                 'Failed to load object \'%s\' from memcache. %s',
                 cls._make_key(), e)
         return None
-    
+
     @classmethod
     def delete(cls, app_context, override_readonly=False):
         """Deletes instance from memcache."""
@@ -378,12 +378,12 @@ class AbstractCachedObject(object):
         chunk_keys.append(key)
         MemcacheManager.delete_multi(chunk_keys, namespace=app_context.get_namespace_name(), override_readonly=override_readonly)
         return True
-    
+
     @classmethod
     def save(cls, app_context, instance):
         """Saves instance to memcache."""
         binary_data = cls.memento_from_instance(instance).serialize();
-        
+
         # delete previous entity with the given key
         # in order to conserve available memcache space.
         cls.delete(app_context, True)
@@ -393,13 +393,13 @@ class AbstractCachedObject(object):
             # TODO: use memcache.set_multi() for speedup, but don't forget
             # about batch operation size limit (32Mb currently).
             chunk = binary_data[pos:pos + MEMCACHE_CHUNK_SIZE]
-        
+
             # the pos is used for reliable distinction between chunk keys.
             # the random suffix is used as a counter-measure for distinction
             # between different values, which can be simultaneously written
             # under the same key.
             chunk_key = '%s%d%d' % (cls._make_key(), pos, random.getrandbits(31))
-        
+
             is_success = MemcacheManager.set(chunk_key, chunk, namespace=app_context.get_namespace_name())
             if not is_success:
                 logging.info("=================== Failed to save" + chunk_key + " in memcache!")
@@ -407,7 +407,7 @@ class AbstractCachedObject(object):
             chunk_keys.append(chunk_key)
         logging.info("=================== Successfully saved " + ",".join(chunk_keys) + " in memcache!")
         return MemcacheManager.set(cls._make_key(), chunk_keys, namespace=app_context.get_namespace_name())
-        
+
 
 
     def serialize(self):
@@ -915,7 +915,7 @@ class PersistentCourse13(object):
                 unit = Unit13()
                 transforms.dict_to_instance(
                     unit_dict, unit, defaults=Unit13.DEFAULT_VALUES)
-                unit.is_paid = False if verify.UNIT_TYPE_UNIT == unit.type and unit.unit_id in PersistentCourse13.FREE_UNIT_IDS else True
+                unit.is_paid = False #if verify.UNIT_TYPE_UNIT == unit.type and unit.unit_id in PersistentCourse13.FREE_UNIT_IDS else True
                 logging.debug("Loaded unit with id %s and title %s paid: %s" % (unit.unit_id, unit.title, unit.is_paid))
                 self.units.append(unit)
 
@@ -937,7 +937,7 @@ class PersistentCourse13(object):
             units=course.units, lessons=course.lessons)
 
         fs = app_context.fs.impl
-        
+
         binary_data = persistent.serialize()
         binary_data_size = len(binary_data)
         chunk_size = cls.CHUNK_SIZE
@@ -949,11 +949,11 @@ class PersistentCourse13(object):
             filename = fs.physical_to_logical("%s%d" % (cls.COURSES_FILENAME, pos))
             app_context.fs.put(filename, vfs.FileStreamWrapped(None, chunk))
             chunk_count = chunk_count + 1
-        print "Course will be saved in %s chunks." % chunk_count 
+        print "Course will be saved in %s chunks." % chunk_count
         filename = fs.physical_to_logical("chunk_count")
         app_context.fs.put(filename, vfs.string_to_stream(unicode(str(chunk_count), 'ascii')))
         return None
-        
+
 
     @classmethod
     def load(cls, app_context):
@@ -977,7 +977,7 @@ class PersistentCourse13(object):
             pos = pos + cls.CHUNK_SIZE
         binary_data = ''.join(chunks)
 
-        if binary_data:  
+        if binary_data:
             persistent = PersistentCourse13()
             persistent.deserialize(binary_data)
             return CourseModel13(
@@ -985,7 +985,7 @@ class PersistentCourse13(object):
                 units=persistent.units, lessons=persistent.lessons)
         else:
             return None
-    
+
     def serialize(self):
         """Saves instance to a JSON representation."""
         adict = self.to_dict()
@@ -1041,7 +1041,7 @@ class CachedCourse13(AbstractCachedObject):
             next_id=course.next_id,
             units=course.units, lessons=course.lessons,
             unit_id_to_lesson_ids=course.unit_id_to_lesson_ids)
-        
+
     @classmethod
     def load(cls, app_context):
         key = cls._make_key()
@@ -1061,7 +1061,7 @@ class CachedCourse13(AbstractCachedObject):
         cls.SINGLETON_KEY = None
         cls.SINGLETON_INSTANCE = None
         super(CachedCourse13, cls).delete(app_context, override_readonly)
-       
+
 class CourseModel13(object):
     """A course defined in terms of objects (version 1.3)."""
 
@@ -1077,7 +1077,7 @@ class CourseModel13(object):
             if course:
                 CachedCourse13.save(app_context, course)
         else:
-            logging.debug("Loaded course from memcache! :)") 
+            logging.debug("Loaded course from memcache! :)")
         return course
 
     @classmethod
@@ -2726,7 +2726,7 @@ class Course(object):
     def add_unit(self):
         """Adds new unit to a course."""
         return self._model.add_unit('U', 'New Unit')
-    
+
     def add_appendix(self):
         """Adds new appendix to a course."""
         return self._model.add_unit('X', 'New Appendix')
