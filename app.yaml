@@ -82,4 +82,4 @@ handlers:
   static_dir: audio
 - url: /.*
   script: main.app
-  secure: never
+  secure: always
